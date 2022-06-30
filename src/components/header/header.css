@@ -29,6 +29,9 @@
   /* order: 0; */
   border: 0;
 }
+.search-icon:hover {
+  border: 2px;
+}
 
 .search-field {
   width: 100%;
