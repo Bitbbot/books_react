@@ -4,3 +4,7 @@
 .found {
   text-align: center;
 }
+.books-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
