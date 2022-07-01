@@ -28,6 +28,7 @@
   height: 30px;
   /* order: 0; */
   border: 0;
+  cursor: pointer;
 }
 .search-icon:hover {
   border: 2px;

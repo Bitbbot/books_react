@@ -3,8 +3,11 @@
 }
 .found {
   text-align: center;
+  font-weight: bold;
 }
 .books-wrapper {
   display: flex;
   flex-wrap: wrap;
+  /* max-width: 1200px; */
+  justify-content: center;
 }

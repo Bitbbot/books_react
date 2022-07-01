@@ -15,14 +15,16 @@ async function requestBooks(name, category, orderby, startindex, resolve) {
   for (let i = 0; i < data.items.length; i++) {
     const book = {
       id: data.items[i].id,
-      img: data.items[i].volumeInfo.imageLinks?.thumbnail,
+      img: data.items[i].volumeInfo?.imageLinks?.thumbnail,
       title: data.items[i].volumeInfo?.title,
       categories: data.items[i].volumeInfo?.categories,
       authors: data.items[i].volumeInfo?.authors,
+      description: data.items[i].volumeInfo?.description,
     };
     array.push(book);
     // array.push(data.totalItems);
   }
+  console.log(array);
   resolve({
     array,
     totalItems: data.totalItems,
