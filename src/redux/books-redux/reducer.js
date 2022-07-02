@@ -8,7 +8,6 @@ const booksSlice = createSlice({
   reducers: {
     setBooks: (state, action) => {
       state.booksArray = action.payload;
-      // console.log(action.payload);
       console.log();
     },
     deleteBooks: (state, action) => {

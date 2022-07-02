@@ -8,7 +8,6 @@ const bookSlice = createSlice({
   reducers: {
     setCurrentBook: (state, action) => {
       state.currentBook = action.payload;
-      // console.log(action.payload);
       console.log();
     },
   },

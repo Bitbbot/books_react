@@ -16,7 +16,6 @@ export const Header = () => {
   const navigate = useNavigate();
   const request = async (e) => {
     console.log(e);
-    // if (e.key === "Enter") {
     if (e?.key === "Enter" || e?.pageX > 0) {
       let indicator = document.querySelector("#indicator-gif");
       indicator.style.visibility = "visible";
@@ -45,13 +44,9 @@ export const Header = () => {
           },
         ];
       }
-      // console.log(array);
-      // dispatch(setBooks(array));
       dispatch(setBooks(array));
       indicator.style.visibility = "hidden";
     }
-    // }
-    // e.stopPropogation();
   };
   return (
     <div className="header">

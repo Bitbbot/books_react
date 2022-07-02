@@ -22,7 +22,6 @@ async function requestBooks(name, category, orderby, startindex) {
       description: data.items[i].volumeInfo?.description,
     };
     array.push(book);
-    // array.push(data.totalItems);
   }
   return array;
 }

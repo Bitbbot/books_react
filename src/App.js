@@ -13,21 +13,9 @@ function App() {
         <div className="App">
           <Header />
           <Routes>
-            {/* <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route exact path="/app/:id">
-              <BookPage />
-            </Route> */}
-            {/* <Route exact path="/" component={HomePage} />
-            <Route exact path="/app/:id" component={BookPage} /> */}
             <Route exact path="/book/:id" element={<BookPage />} />
-            {/* <BookPage />
-            </Route> */}
             <Route exact path="/" element={<HomePage />} />
             <Route path="*" element={<ErrorPage />} />
-            {/* <HomePage /> */}
-            {/* </Route> */}
           </Routes>
         </div>
       </Router>
