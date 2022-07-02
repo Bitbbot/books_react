@@ -1,12 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux/es/exports";
 import "./header.css";
-import { showInput } from "../../pages/home-page";
 import { requestBooks } from "../../api";
 import { setTotalItems } from "../../redux/total-items/reducer";
 import { setBooks } from "../../redux/books-redux/reducer";
 import { useNavigate } from "react-router-dom";
-// let textInput = React.createRef();
 let magnifierClick = React.createRef();
 export let textInput = React.createRef();
 export let categoriesValue = React.createRef();
@@ -17,7 +15,6 @@ export const Header = () => {
   const navigate = useNavigate();
   const request = async (e) => {
     dispatch(setBooks([]));
-    console.log(e);
     if (e?.key === "Enter" || e?.pageX > 0) {
       let indicator = document.querySelector("#indicator-gif");
       indicator.style.visibility = "visible";
@@ -27,30 +24,27 @@ export const Header = () => {
           ? "+subject:" + categoriesValue.current.value
           : "";
       let array = [];
-      // try {
-      const object = await requestBooks(
-        textInput.current.value,
-        category,
-        sortingValue.current.value,
-        0
-      );
-      console.log(object);
-      array = object.array;
-      console.log("here");
-      dispatch(setTotalItems(object.totalItems));
-      // } catch {
-      //   array = [
-      //     {
-      //       id: "1",
-      //       img: undefined,
-      //       categories: undefined,
-      //       title: "We cant find the books with this title",
-      //       authors: undefined,
-      //       description: undefined,
-      //     },
-      //   ];
-
-      console.log(array);
+      try {
+        const object = await requestBooks(
+          textInput.current.value,
+          category,
+          sortingValue.current.value,
+          0
+        );
+        array = object.array;
+        dispatch(setTotalItems(object.totalItems));
+      } catch {
+        array = [
+          {
+            id: "1",
+            img: undefined,
+            categories: undefined,
+            title: "We cant find the books with this title",
+            authors: undefined,
+            description: undefined,
+          },
+        ];
+      }
       dispatch(setBooks(array));
       indicator.style.visibility = "hidden";
     }

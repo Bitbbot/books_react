@@ -1,16 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux/es/exports";
+import { useSelector } from "react-redux/es/exports";
 import "./home-page.css";
-import { requestBooks } from "../../api";
-import {
-  textInput,
-  categoriesValue,
-  sortingValue,
-} from "../../components/header";
 import { BookItem } from "../../components/book-item";
-let numberOfBooks = React.createRef();
 
 export const HomePage = () => {
   const books = useSelector((state) => state.books.booksArray);
@@ -29,4 +20,3 @@ export const HomePage = () => {
     </div>
   );
 };
-// numberOfBooks.current.innerHTML = "Found: " + array.totalItems;
