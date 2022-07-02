@@ -4,6 +4,7 @@ import "./header.css";
 import { showInput } from "../../pages/home-page";
 import { requestBooks } from "../../api";
 import { setBooks } from "../../redux/books-redux/reducer";
+import { useNavigate } from "react-router-dom";
 // let textInput = React.createRef();
 let magnifierClick = React.createRef();
 export let textInput = React.createRef();
@@ -11,7 +12,9 @@ export let categoriesValue = React.createRef();
 export let sortingValue = React.createRef();
 export const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const request = async (e) => {
+    navigate("/");
     let category =
       categoriesValue.current.value !== "all"
         ? "+subject:" + categoriesValue.current.value
