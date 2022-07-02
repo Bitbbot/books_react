@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import "./home-page.css";
 import { requestBooks } from "../../api";
 import {
@@ -9,14 +9,11 @@ import {
   sortingValue,
 } from "../../components/header";
 import { BookItem } from "../../components/book-item";
+import { useHistory } from "react-router-dom";
 let numberOfBooks = React.createRef();
 
 export const HomePage = () => {
-  // let [a, setA] = useState([1, 1, 1, 1]);
   const books = useSelector((state) => state.books.booksArray);
-  console.log(books);
-  console.log("books");
-
   return (
     <div className="home-page">
       <div className="home-page-wrapper">
@@ -30,6 +27,4 @@ export const HomePage = () => {
     </div>
   );
 };
-//полностью убрать эту функцию, забирать параметры из state и помещать в state
-
 // numberOfBooks.current.innerHTML = "Found: " + array.totalItems;
