@@ -4,6 +4,7 @@ import { HomePage } from "./pages/home-page";
 import { BookPage } from "./pages/book-page";
 import { Header } from "./components/header";
 import { store } from "./redux";
+import { ErrorPage } from "./pages/error-page";
 
 function App() {
   return (
@@ -20,10 +21,11 @@ function App() {
             </Route> */}
             {/* <Route exact path="/" component={HomePage} />
             <Route exact path="/app/:id" component={BookPage} /> */}
-            <Route exact path="/app/:id" element={<BookPage />} />
+            <Route exact path="/book/:id" element={<BookPage />} />
             {/* <BookPage />
             </Route> */}
             <Route exact path="/" element={<HomePage />} />
+            <Route path="*" element={<ErrorPage />} />
             {/* <HomePage /> */}
             {/* </Route> */}
           </Routes>

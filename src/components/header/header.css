@@ -82,4 +82,15 @@
   .sorting {
     padding: 0 10px;
   }
-} ;
+}
+#indicator-gif {
+  display: block;
+  visibility: hidden;
+  width: 200px;
+  height: 110px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}

@@ -1,0 +1,40 @@
+.book-wrapper {
+  display: inline-flex;
+}
+.img-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 50px;
+  height: 280px;
+  background-color: antiquewhite;
+}
+.book-img {
+  width: 200px;
+  box-shadow: 8px 8px 15px 0px #aaa;
+}
+.book-items-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
+}
+.categories-item {
+  font-family: Andale Mono, monospace;
+  padding: 10px;
+}
+.authors-item {
+  padding: 10px;
+  color: gray;
+  text-decoration: underline;
+  font-size: 10px;
+}
+.title-item {
+  font-size: 25px;
+  padding: 10px;
+}
+.description-item {
+  display: block;
+
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}

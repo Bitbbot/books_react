@@ -10,7 +10,7 @@ export const BookItem = ({ book }) => {
     dispatch(setCurrentBook(book));
   };
   return (
-    <Link to={"/app/" + book.id} className="book-item" onClick={handleClick}>
+    <Link to={"/book/" + book.id} className="book-item" onClick={handleClick}>
       <img src={book.img} className="book-item__img"></img>
       <span className="book-item__category">
         {book?.categories && book.categories[0]}

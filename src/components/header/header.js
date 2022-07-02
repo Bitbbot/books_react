@@ -10,24 +10,47 @@ let magnifierClick = React.createRef();
 export let textInput = React.createRef();
 export let categoriesValue = React.createRef();
 export let sortingValue = React.createRef();
+
 export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const request = async (e) => {
-    navigate("/");
-    let category =
-      categoriesValue.current.value !== "all"
-        ? "+subject:" + categoriesValue.current.value
-        : "";
-    const array = await requestBooks(
-      textInput.current.value,
-      category,
-      sortingValue.current.value,
-      0
-    );
-    // console.log(array);
-    // dispatch(setBooks(array));
-    dispatch(setBooks(array));
+    console.log(e);
+    // if (e.key === "Enter") {
+    if (e?.key === "Enter" || e?.pageX > 0) {
+      let indicator = document.querySelector("#indicator-gif");
+      indicator.style.visibility = "visible";
+      navigate("/");
+      let category =
+        categoriesValue.current.value !== "all"
+          ? "+subject:" + categoriesValue.current.value
+          : "";
+      let array = [];
+      try {
+        array = await requestBooks(
+          textInput.current.value,
+          category,
+          sortingValue.current.value,
+          0
+        );
+      } catch {
+        array = [
+          {
+            id: "1",
+            img: undefined,
+            categories: undefined,
+            title: "We cant find the books with this title",
+            authors: undefined,
+            description: undefined,
+          },
+        ];
+      }
+      // console.log(array);
+      // dispatch(setBooks(array));
+      dispatch(setBooks(array));
+      indicator.style.visibility = "hidden";
+    }
+    // }
     // e.stopPropogation();
   };
   return (
@@ -35,6 +58,10 @@ export const Header = () => {
       <div className="header-wrapper">
         <div className="title">Search for books</div>
         <div className="search">
+          <img
+            src={process.env.PUBLIC_URL + "/indicator.gif"}
+            id="indicator-gif"
+          />
           <input
             type="text"
             class="search-field"
