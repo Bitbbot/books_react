@@ -14,10 +14,12 @@ let numberOfBooks = React.createRef();
 
 export const HomePage = () => {
   const books = useSelector((state) => state.books.booksArray);
+  const totaIitems =
+    "Found " + useSelector((state) => state.totalItems.totalItems) + " results";
   return (
     <div className="home-page">
       <div className="home-page-wrapper">
-        <div className="found" ref={numberOfBooks}></div>
+        <div className="found">{totaIitems}</div>
         <div className="books-wrapper">
           {books?.map((book) => (
             <BookItem book={book} key={book.id} />

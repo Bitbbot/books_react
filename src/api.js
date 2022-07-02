@@ -24,6 +24,6 @@ async function requestBooks(name, category, orderby, startindex) {
     array.push(book);
   }
   console.log(array);
-  return array;
+  return { array, totalItems: data.totalItems };
 }
 export { requestBooks };

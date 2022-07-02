@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const totalItemsSlice = createSlice({
   name: "totalItems",
-  initialState: 0,
+  initialState: { totalItems: 0 },
   reducers: {
     setTotalItems: (state, action) => {
       state.totalItems = action.payload;

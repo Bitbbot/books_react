@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux/es/exports";
 import "./header.css";
 import { showInput } from "../../pages/home-page";
 import { requestBooks } from "../../api";
+import { setTotalItems } from "../../redux/total-items/reducer";
 import { setBooks } from "../../redux/books-redux/reducer";
 import { useNavigate } from "react-router-dom";
 // let textInput = React.createRef();
@@ -26,25 +27,29 @@ export const Header = () => {
           ? "+subject:" + categoriesValue.current.value
           : "";
       let array = [];
-      try {
-        array = await requestBooks(
-          textInput.current.value,
-          category,
-          sortingValue.current.value,
-          0
-        );
-      } catch {
-        array = [
-          {
-            id: "1",
-            img: undefined,
-            categories: undefined,
-            title: "We cant find the books with this title",
-            authors: undefined,
-            description: undefined,
-          },
-        ];
-      }
+      // try {
+      const object = await requestBooks(
+        textInput.current.value,
+        category,
+        sortingValue.current.value,
+        0
+      );
+      console.log(object);
+      array = object.array;
+      console.log("here");
+      dispatch(setTotalItems(object.totalItems));
+      // } catch {
+      //   array = [
+      //     {
+      //       id: "1",
+      //       img: undefined,
+      //       categories: undefined,
+      //       title: "We cant find the books with this title",
+      //       authors: undefined,
+      //       description: undefined,
+      //     },
+      //   ];
+
       console.log(array);
       dispatch(setBooks(array));
       indicator.style.visibility = "hidden";
