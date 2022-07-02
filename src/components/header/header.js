@@ -15,6 +15,7 @@ export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const request = async (e) => {
+    dispatch(setBooks([]));
     console.log(e);
     if (e?.key === "Enter" || e?.pageX > 0) {
       let indicator = document.querySelector("#indicator-gif");
@@ -44,6 +45,7 @@ export const Header = () => {
           },
         ];
       }
+      console.log(array);
       dispatch(setBooks(array));
       indicator.style.visibility = "hidden";
     }

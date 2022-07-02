@@ -14,7 +14,7 @@ async function requestBooks(name, category, orderby, startindex) {
   let array = [];
   for (let i = 0; i < data.items.length; i++) {
     const book = {
-      id: data.items[i].id,
+      id: data.items[i].id + (startindex + i),
       img: data.items[i].volumeInfo?.imageLinks?.thumbnail,
       title: data.items[i].volumeInfo?.title,
       categories: data.items[i].volumeInfo?.categories,
@@ -23,6 +23,7 @@ async function requestBooks(name, category, orderby, startindex) {
     };
     array.push(book);
   }
+  console.log(array);
   return array;
 }
 export { requestBooks };
