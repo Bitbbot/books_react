@@ -1,4 +1,4 @@
-async function requestBooks(name, category, orderby, startindex, resolve) {
+async function requestBooks(name, category, orderby, startindex) {
   const response = await fetch(
     "https://www.googleapis.com/books/v1/volumes?q=" +
       name +
@@ -24,10 +24,6 @@ async function requestBooks(name, category, orderby, startindex, resolve) {
     array.push(book);
     // array.push(data.totalItems);
   }
-  console.log(array);
-  resolve({
-    array,
-    totalItems: data.totalItems,
-  });
+  return array;
 }
 export { requestBooks };

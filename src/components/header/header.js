@@ -1,12 +1,32 @@
 import React from "react";
+import { useDispatch } from "react-redux/es/exports";
 import "./header.css";
 import { showInput } from "../../pages/home-page";
+import { requestBooks } from "../../api";
+import { setBooks } from "../../redux/books-redux/reducer";
 // let textInput = React.createRef();
 let magnifierClick = React.createRef();
 export let textInput = React.createRef();
 export let categoriesValue = React.createRef();
 export let sortingValue = React.createRef();
 export const Header = () => {
+  const dispatch = useDispatch();
+  const request = async (e) => {
+    let category =
+      categoriesValue.current.value !== "all"
+        ? "+subject:" + categoriesValue.current.value
+        : "";
+    const array = await requestBooks(
+      textInput.current.value,
+      category,
+      sortingValue.current.value,
+      0
+    );
+    // console.log(array);
+    // dispatch(setBooks(array));
+    dispatch(setBooks(array));
+    // e.stopPropogation();
+  };
   return (
     <div className="header">
       <div className="header-wrapper">
@@ -17,14 +37,14 @@ export const Header = () => {
             class="search-field"
             defaultValue="Javascript"
             ref={textInput}
-            onKeyPress={showInput}
+            onKeyPress={request}
           ></input>
           <img
             src={process.env.PUBLIC_URL + "/magnifier.png"}
             alt=""
             className="search-icon"
             ref={magnifierClick}
-            onClick={showInput}
+            onClick={request}
           />
         </div>
         <div className="sorting">
