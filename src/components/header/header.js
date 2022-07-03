@@ -14,8 +14,9 @@ export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const request = async (e) => {
-    dispatch(setBooks([]));
     if (e?.key === "Enter" || e?.pageX > 0) {
+      dispatch(setTotalItems(0));
+      dispatch(setBooks([]));
       let indicator = document.querySelector("#indicator-gif");
       indicator.style.visibility = "visible";
       navigate("/");
